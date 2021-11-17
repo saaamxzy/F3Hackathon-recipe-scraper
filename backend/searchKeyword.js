@@ -2,11 +2,10 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
 const searchKeyword = async function(keyword) {
-    console.log("Search Keyword...");
+    console.log("Search Keyword: " + keyword);
 
-    const res = await fetchData(keyword);
-
-    const text = res.text();
+    const res = await fetchData(keyword) ;
+    const text = await res.text();
     const jsonRes = getAsins(text);
 
     return jsonRes;
@@ -14,19 +13,17 @@ const searchKeyword = async function(keyword) {
 
 const getAsins = function(html) {
     const $ = cheerio.load(html);
-
     const json = JSON.parse($('.a-declarative[data-action=fresh-add-to-cart]').first().attr('data-fresh-add-to-cart'));
     const asin = json["asin"];
     const offerListingId = json["offerListingID"];
 
-    console.log("Found ASIN: " + asin + " and offerListingId: " + offerListingId);
     return {asin: asin, offerListingID: offerListingId};
 };
 
 const fetchData = async function(keyword) {
     const url = `https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Damazonfresh&field-keywords=${keyword}`;
 
-    return fetch(url, {
+    return await fetch(url, {
         "headers": {
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
             "accept-language": "en-US,en;q=0.9",

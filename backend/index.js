@@ -8,7 +8,7 @@ const port = 8000;
 
 app.get('/', (req, res) => {
 
-  Handler.handle(["maple+syrup"]);
+  Handler.handle(["maple+syrup", "ketchup"]);
   //res.send(SearchKeyword.searchKeyword("maple+syrup"));
 
   //res.send(AddToCart.addToCart("B01LYWQUSG",

@@ -24,8 +24,8 @@ addToCart = function(asin, offerListingId, quantity) {
         },
         "body": `{\"reftag\":\"sr_1_3\",\"queryLogInfoParams\":{\"qid\":\"1637172446\",\"sr\":\"1-3\"},\"clientID\":\"fresh-search\",\"csrfToken\":\"g/0YuadKOlJeGbQvtICk/8hwJL/DGu7oEAgWtboHZ/ZXAAAAAQAAAABhlUTecmF3AAAAAPxEJ5HRQInxPcX7Afa6ow==\",\"brandId\":\"QW1hem9uIEZyZXNo\",\"asin\":\"${asin}\",\"sessionID\":\"132-6285241-0758213\",\"promotionId\":\"any\",\"offerListingID\":\"${offerListingId}\",\"quantity\":1}`,
         "method": "POST"
-    }).then(res => res.json())
-      .then(json => console.log(json));
+    }).then(res => res.json());
+      //.then(json => console.log(json));
 
     return "Add to cart...";
 };
