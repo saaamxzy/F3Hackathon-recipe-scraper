@@ -1,7 +1,11 @@
 import "../css/popup.css";
 
+function test() {
+  console.log('test');
+}
 
 chrome.runtime.onMessage.addListener(function(request, sender) {
+  console.log(request);
     if (request.action == "getSource") {
       message.innerText = request.source;
     }

@@ -40,14 +40,12 @@ function DOMtoString(document_root) {
     var ingredientsRawArray;
     for (let i = 0; i < allUls.length; i++) {
         if (allUls[i].attrs.class == "ingredients-section") {
-            // console.log(allUls[i]);
             ingredientsRawArray = allUls[i].contents;
             break;
         }
     }
-    // console.log(ingredientsRawArray);
 
-    var resultIngredients = [];
+    var ingredientsObjArray = [];
     var resultStr = "";
     for (let i = 0; i < ingredientsRawArray.length; i++) {
         var soupTag = ingredientsRawArray[i];
@@ -59,20 +57,10 @@ function DOMtoString(document_root) {
             quantityUnit: ingredientAttrs['data-unit']
         }
         resultStr += ingredientObjToStr(ingredientObj) + "\n";
+        ingredientsObjArray.push(ingredientObj);
     }
 
-    // for (let ingredient in ingredientsRawArray.contents) {
-    //     console.log(ingredient);
-    // }
-
-    // for (let i = 0; i < ingredientsRawArray.contents.length; i++) {
-    //     var ingredientRaw = ingredientsRawArray
-    //     console.log(ingredientsRawArray.contents);
-    //     // for (innerContent in ingredientsRaw.contents[i]) {
-    //     //     // stuff = innerContent.contents[0].contents[0].attrs;
-    //     //     // console.log(stuff);
-    //     // }
-    // }
+    console.log(ingredientsObjArray);
 
     return resultStr;
 }
