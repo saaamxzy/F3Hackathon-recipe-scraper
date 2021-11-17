@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parse": "^0.1.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "got": "^10.4.0",
-    "node-fetch": "^2.0.0"
+    "node-fetch": "^2.0.0",
+    "save": "^2.4.0"
   }
 }
