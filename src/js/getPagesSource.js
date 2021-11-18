@@ -71,7 +71,11 @@ function DOMtoString(document_root) {
 
     console.log(ingredientsObjArray);
 
-    return resultStr;
+    var cartObj = {
+        cart: ingredientsObjArray
+    }
+
+    return JSON.stringify(cartObj);
 }
 
 chrome.runtime.sendMessage({

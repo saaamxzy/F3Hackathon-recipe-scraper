@@ -6,10 +6,11 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const port = 8000;
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.post('/addToCart', (req, res) => {
-  const cart = JSON.parse(req.body.cart)
-  console.log(cart)
+  const cart = req.body.cart;
+  console.log("cart received in the backend: ", cart);
   cart.map(obj => {return parseObject(obj)}).forEach(async (obj) => await Handler.handle(obj.ingredientName, obj.quantity))
 
   res.status(200).send({message: "SUCCESS"})
@@ -25,6 +26,11 @@ function parseObject(cart){
   return {ingredientName: cart.ingredient, quantity: cart.quantity}
 }
 
+app.get('/', (req, res) => {
+
+  Handler.handle("maple+syrup", 1);
+
+});
 
 
 app.listen(port, () => {

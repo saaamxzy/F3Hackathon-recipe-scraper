@@ -12,7 +12,9 @@ const searchKeyword = async function(keyword) {
 };
 
 const getAsins = function(html) {
+    // console.log(html);
     const $ = cheerio.load(html);
+    console.log($('.a-declarative[data-action=fresh-add-to-cart]').first());
     const json = JSON.parse($('.a-declarative[data-action=fresh-add-to-cart]').first().attr('data-fresh-add-to-cart'));
     const asin = json["asin"];
     const offerListingId = json["offerListingID"];
