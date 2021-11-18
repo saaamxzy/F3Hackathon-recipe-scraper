@@ -1,5 +1,14 @@
 import JSSoup from 'jssoup'; 
 
+// document.addEventListener('DOMContentLoaded', function() {
+//     var link = document.getElementById('testId');
+//     console.log('linking');
+//     // onClick's logic below:
+//     link.addEventListener('click', function() {
+//         console.log("abc");
+//     });
+// });
+
 function ingredientObjToStr(ingredientObj) {
     return "name: " + ingredientObj.name
      + ", ingredient: " + ingredientObj.ingredient
